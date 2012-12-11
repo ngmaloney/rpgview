@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = Rpgview::VERSION
   gem.authors       = ["Nick Maloney"]
   gem.email         = ["ngmaloney@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Generates postgresql views with sane table structure from legacy tables.}
+  gem.summary       = %q{RPGView is a sql generator for creating a Postgresql view wrapper around a gnarly legacy table. It includes all the Postgresql 9.1 trigger goodness for interacting directly with the view in your Rails app.}
+  gem.homepage      = "https://github.com/ngmaloney/rpgview"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
