@@ -33,6 +33,7 @@ The mapping.yaml file should look something like:
         value: 'attribute_value'
 
 And it will output the following sql:
+
     /*
      * View created by rpgview for radcheck table.
     */
