@@ -1,6 +1,6 @@
 # Rpgview
 
-TODO: Write a gem description
+RPGView is a ruby based sql generator for creating a Postgresql view wrapper around a gnarly legacy table. It includes all the Postgresql 9.x trigger goodness for interacting directly with the view in your Rails app.
 
 ## Installation
 
@@ -18,7 +18,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+rpgview /path/to/mapping.yaml
+
+The mapping.yaml file should looke something like:
+
+mapping:
+  table: 'radcheck'
+  view: 'radius_check'
+  mappings:
+    legacyid: 'id'
+    username: 'user_name'
+    attribute: 'attribute_type'
+    op: 'operator'
+    value: 'attribute_value'
+
 
 ## Contributing
 
