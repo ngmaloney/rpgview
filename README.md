@@ -22,15 +22,15 @@ rpgview /path/to/mapping.yaml
 
 The mapping.yaml file should looke something like:
 
-mapping:
-  table: 'radcheck'
-  view: 'radius_check'
-  mappings:
-    legacyid: 'id'
-    username: 'user_name'
-    attribute: 'attribute_type'
-    op: 'operator'
-    value: 'attribute_value'
+    mapping:
+      table: 'radcheck'
+      view: 'radius_check'
+      mappings:
+        legacyid: 'id'
+        username: 'user_name'
+        attribute: 'attribute_type'
+        op: 'operator'
+        value: 'attribute_value'
 
 
 ## Contributing
