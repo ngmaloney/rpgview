@@ -1,0 +1,41 @@
+/*
+ * View created by rpgview for <%= @table %> table.
+*/
+CREATE VIEW <%= @view %> AS
+  SELECT <%= @mappings.map{|k,v| "#{k} AS #{v}"}.join(",\n\t") %>
+  FROM <%= @table %>;
+
+/*
+ * Triggers for updating view
+*/
+CREATE OR REPLACE FUNCTION radius_<%= @view %>_handler()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $function$
+  BEGIN
+    IF TG_OP = 'INSERT' THEN
+      INSERT INTO <%= @table %> VALUES(
+        <%= @mappings.map{|k,v| "NEW.#{v}"}.join(",\n\t") %>
+      );
+      RETURN NEW;
+    ELSIF TG_OP = 'UPDATE' THEN
+      UPDATE <%= @table %>
+      SET <%= @mappings.map{|k,v| "#{k}=NEW.#{v}"}.join(",\n\t") %>
+      WHERE <%= @mappings.first.first %> = OLD.<%= @mappings.first.last %>;
+      RETURN NEW;
+    ELSIF TG_OP = 'DELETE' THEN
+      DELETE FROM <%= @table %>
+      WHERE <%= @mappings.first.first %> = OLD.<%= @mappings.first.last %>;
+      RETURN NULL;
+    END IF;
+    RETURN NEW;
+  END;
+$function$;
+
+/*
+ * Bind function to INSERT, UPDATE, DELETE events
+*/
+CREATE TRIGGER <%= @view %>_change
+INSTEAD OF INSERT OR UPDATE OR DELETE
+ON <%= @view %>
+FOR EACH ROW EXECUTE PROCEDURE <%= @view %>_change_handler();

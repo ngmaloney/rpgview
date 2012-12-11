@@ -1,0 +1,9 @@
+mapping:
+  table: 'radcheck'
+  view: 'radius_check'
+  mappings:
+    id: 'id'
+    username: 'user_name'
+    attribute: 'attribute_type'
+    op: 'op'
+    value: 'attribute_value'

@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require 'rpgview'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do |schema|
+    if !File.exists?(schema.to_s)
+      puts "A valid schema file is required."
+      exit
+    end
+    rpgview = Rpgview::Generator.new schema
+    puts rpgview.generate
+  end
+
+  description "Given a schema mapping, rpgview generates sql for creating a view with triggers for Postgresql"
+
+  version Rpgview::VERSION
+
+  use_log_level_option
+
+  go!
+end
