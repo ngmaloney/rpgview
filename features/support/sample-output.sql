@@ -12,7 +12,7 @@ CREATE VIEW radius_check AS
 /*
  * Triggers for updating view
 */
-CREATE OR REPLACE FUNCTION radius_checkchange_handler()
+CREATE OR REPLACE FUNCTION radius_check_change_handler()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $function$
