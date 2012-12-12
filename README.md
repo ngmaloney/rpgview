@@ -17,8 +17,14 @@ Or install it yourself as:
     $ gem install rpgview
 
 ## Usage
+Using the included command line app
 
-rpgview /path/to/mapping.yaml
+    $ rpgview /path/to/mapping.yaml
+
+Invoking programatically
+
+    schema = "#{Rails.root}/db/migrate/mappings/legacy_mapping.yaml"
+    sql = Rpgview::Generator.new(schema).generate
 
 The mapping.yaml file should look something like:
 
