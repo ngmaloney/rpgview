@@ -16,7 +16,7 @@ module Rpgview
 
     def generate
       template = ERB.new File.read(File.join(File.dirname(__FILE__), SCHEMA_TEMPLATE))
-      template.run(binding).to_s
+      template.result(binding).to_s
     end
 
     private
