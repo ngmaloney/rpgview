@@ -8,7 +8,7 @@ CREATE VIEW <%= @view %> AS
 /*
  * Triggers for updating view
 */
-CREATE OR REPLACE FUNCTION radius_<%= @view %>_handler()
+CREATE OR REPLACE FUNCTION <%= @view %>change_handler()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $function$
