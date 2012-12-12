@@ -48,7 +48,7 @@ And it will output the following sql:
     /*
      * Triggers for updating view
     */
-    CREATE OR REPLACE FUNCTION radius_radius_check_handler()
+    CREATE OR REPLACE FUNCTION radius_check_change_handler()
     RETURNS TRIGGER
     LANGUAGE plpgsql
     AS $function$
